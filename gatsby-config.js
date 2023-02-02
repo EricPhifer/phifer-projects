@@ -4,13 +4,21 @@
 module.exports = {
   siteMetadata: {
     title: `Phifer Projects`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://projects.ericphifer.com`
   },
-  plugins: [{
+  plugins: [
+    "gatsby-plugin-image", 
+    "gatsby-plugin-sharp", 
+    "gatsby-transformer-sharp", 
+    "gatsby-plugin-styled-components", 
+    "gatsby-plugin-sitemap",
+    "gatsby-plugin-google-gtag", 
+  {
     resolve: 'gatsby-source-sanity',
     options: {
       "projectId": "84qa0kd3",
       "dataset": "production"
     }
-  }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-styled-components", "gatsby-plugin-google-gtag", "gatsby-plugin-sitemap"]
+  },
+]
 };
