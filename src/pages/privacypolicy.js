@@ -2,7 +2,6 @@ import { defaultComponents, PortableText } from '@portabletext/react';
 import { graphql } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import Seo from '../components/Seo';
 
 const PolicyStyles = styled.div`
   position: absolute;
@@ -49,7 +48,6 @@ export default function PrivacyPolicy({ data }) {
   const policies = data.policies.nodes;
   return (
     <>
-      <Seo title="Privacy Policy" />
       <PolicyStyles>
         <div className='overlord'>
           <p className="updateDate">Last updated: May 17, 2022</p>

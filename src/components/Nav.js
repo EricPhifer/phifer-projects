@@ -1,7 +1,6 @@
 import React from 'react';
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
-import SanityImage from 'gatsby-plugin-sanity-image';
 
 const NavStyles = styled.div`
   width: 100vw;
@@ -343,24 +342,6 @@ export default function Nav() {
       navigation: allSanityNavigation {
           nodes {
             id
-            mainalt
-            mainlogo {
-              asset {
-                id
-              }
-              ...ImageWithPreview
-            }
-            mobilebg {
-              asset {
-                id
-              }
-              ...ImageWithPreview
-            }
-            links {
-              pagename
-              pagelink
-              _key
-            }
           }
         }
       }
@@ -374,26 +355,11 @@ const [checked, setChecked] = React.useState(false || '');
       {nodes.map((node) => (
         <div className="nodeParser" key={node.id}>
           <NavStyles>
-            <div className="navImg full">
-              <SanityImage 
-                {...node.mainlogo}
-                alt={node.mainalt}
-                style={{
-                  objectFit: 'cover',
-                }}
-              />
-            </div>
             <div className="full navBG">
               <div className="maxWidth center">
                 <nav>
                   <ul className='inline center'>
-                    {node.links.map((link) => (
-                      <Link to={link.pagelink} key={link._key}>
-                        <li>
-                          <span>{link.pagename}</span>
-                        </li>
-                      </Link>
-                    ))}
+ 
                   </ul>
                 </nav>
               </div>
@@ -413,21 +379,7 @@ const [checked, setChecked] = React.useState(false || '');
                 <div id="menu" className="menuContainer">
                   <nav className="upperNav">
                     <ul>
-                      {node.links.map((link) => (
-                        <button 
-                          type="button" 
-                          onClick={
-                            () => {setChecked(old => !old)}
-                          }
-                          key={link._key}
-                        >
-                          <Link to={link.pagelink} className="mobileLink">
-                            <li>
-                              <p>{link.pagename}</p>
-                            </li>
-                          </Link>
-                        </button>
-                      ))}
+         
                     </ul>
                   </nav>
                 </div>
@@ -448,21 +400,7 @@ const [checked, setChecked] = React.useState(false || '');
                 <div id="menu" className="menuContainer">
                   <nav className="upperNav">
                     <ul>
-                      {node.links.map((link) => (
-                        <button 
-                          type="button" 
-                          onClick={
-                            () => {setChecked(old => !old)}
-                          }
-                          key={link._key}
-                        >
-                          <Link to={link.pagelink} className="mobileLink">
-                            <li>
-                              <p>{link.pagename}</p>
-                            </li>
-                          </Link>
-                        </button>
-                      ))}
+                
                     </ul>
                   </nav>
                 </div>

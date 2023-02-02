@@ -1,6 +1,11 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+
+ require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `Phifer Projects`,
@@ -19,6 +24,13 @@ module.exports = {
       "projectId": "84qa0kd3",
       "dataset": "production"
     }
+  },
+  {
+    resolve: 'gatsby-plugin-sanity-image',
+    options: {
+      projectId: process.env.SANITY_PROJECT_ID,
+      dataset: process.env.SANITY_DATASET,
+    },
   },
 ]
 };

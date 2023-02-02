@@ -1,7 +1,5 @@
 import React from 'react';
-import { graphql, Link, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
-import SanityImage from 'gatsby-plugin-sanity-image';
 
 const BodyStyles = styled.div`
   width: 100vw;

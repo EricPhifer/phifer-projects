@@ -2,7 +2,6 @@ import { defaultComponents, PortableText } from '@portabletext/react';
 import { graphql } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import Seo from '../components/Seo';
 
 const TermStyles = styled.div`
   position: absolute;
@@ -49,7 +48,6 @@ export default function TermsConditions({ data }) {
   const terms = data.terms.nodes;
   return (
     <>
-      <Seo title="Terms &amp; Conditions" />
       <TermStyles>
         <div className='overlord'>
           <p className="updateDate">Last updated: May 17, 2022</p>
