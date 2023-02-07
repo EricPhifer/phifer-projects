@@ -2,18 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const BodyStyles = styled.div`
-  width: 100vw;
+  max-width: 100vw;
   position: relative;
   .full {
-    width: 100vw;
+    margin: 2rem;
+    padding: 0;
     position: relative;
-  }
-  .maxWidth {
-    max-width: 1080px;
-    margin: 0 auto;
-  }
-  a {
-    cursor: pointer;
   }
   .inline {
     display: inline-flex;
@@ -46,7 +40,30 @@ const TabletBodyStyles = styled.div`
   @media only screen and (max-width: 500px) {
     display: none;
   }
- 
+
+  max-width: 100vw;
+  position: relative;
+  .full {
+    margin: 2rem;
+    padding: 0;
+    position: relative;
+  }
+  .inline {
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+  }
+  .flex {
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 0;
+    padding: 0;
+  }
+  .center {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
 `;
 
 const MobileBodyStyles = styled.div`
@@ -56,35 +73,91 @@ const MobileBodyStyles = styled.div`
   }
   .inline {
     display: inline-flex;
-    a, span {
+    a,
+    span {
       padding-left: 1rem;
     }
   }
+  max-width: 100vw;
+  position: relative;
+  .full {
+    margin: 2rem;
+    padding: 0;
+    position: relative;
+  }
+  .flex {
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 0;
+    padding: 0;
+  }
+  .center {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
 `;
 
+// JS testing
+
+// function add(a, b = 3) {
+//   const total = a + b;
+//   return total;
+// }
+
+// converting to arrow function
+
+// const add = (a, b = 3) => a + b;
+
+// attempting to build and unordered list - doesnt work
+const buildList = () => {
+  // build the unordered list
+  const ulist = document.createElement('ul');
+
+  // build the list items
+  const itemOne = document.createElement('li');
+  itemOne.classList.add('itemOne');
+  itemOne.textContent('First Item');
+
+  const itemTwo = document.createElement('li');
+  itemTwo.classList.add('itemTwo');
+  itemTwo.textContent('Second Item');
+
+  const itemThree = document.createElement('li');
+  itemThree.classList.add('itemThree');
+  itemThree.textContent('Third Item');
+
+  const itemFour = document.createElement('li');
+  itemFour.classList.add('itemFour');
+  itemFour.textContent('Fourth Item');
+
+  const itemFive = document.createElement('li');
+  itemFive.classList.add('itemFive');
+  itemFive.textContent('Fifth Item');
+
+  // insert list items into the unordered list from 1-5
+  ulist.insertAdjacentElement('afterbegin', itemThree);
+  itemThree.insertAdjacentElement('beforebegin', itemTwo);
+  itemThree.insertAdjacentElement('afterend', itemFour);
+  itemTwo.insertAdjacentElement('beforebegin', itemOne);
+  itemFour.insertAdjacentElement('afterbegin', itemFive);
+};
 
 export default function Body() {
+  const fullRef = React.createRef();
   return (
     <>
-      {nodes.map((node) => (
-        <div className="nodeParser" key={node.id}>
-          <BodyStyles>
-            <div className="full">
-      
-            </div>
-          </BodyStyles>
-          <TabletBodyStyles>
-            <div className="full">
-             
-            </div>
-          </TabletBodyStyles>
-          <MobileBodyStyles>
-            <div className="full">
-              
-            </div>
-          </MobileBodyStyles>
+      <BodyStyles>
+        <div className="full" ref={fullRef}>
+          {/* {buildList.insertAdjacentElement('afterstart', fullRef)} */}
         </div>
-      ))} 
+      </BodyStyles>
+      <TabletBodyStyles>
+        <div className="full" />
+      </TabletBodyStyles>
+      <MobileBodyStyles>
+        <div className="full" />
+      </MobileBodyStyles>
     </>
   );
 }

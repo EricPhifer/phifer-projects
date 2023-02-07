@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import 'normalize.css';
-import Nav from './Nav';
+import Navbar from './Navbar';
 import GlobalStyles from '../styles/GlobalStyles';
 import Typography from '../styles/Typography';
 
@@ -17,7 +17,7 @@ export default function Layout({ children }) {
       <GlobalStyles />
       <Typography />
       <SiteStyles>
-        <Nav />
+        <Navbar />
         {children}
       </SiteStyles>
     </>

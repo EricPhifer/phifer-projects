@@ -2,33 +2,33 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 
- require("dotenv").config({
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
 module.exports = {
   siteMetadata: {
     title: `Phifer Projects`,
-    siteUrl: `https://projects.ericphifer.com`
+    siteUrl: `https://projects.ericphifer.com`,
   },
   plugins: [
-    "gatsby-plugin-image", 
-    "gatsby-plugin-sharp", 
-    "gatsby-transformer-sharp", 
-    "gatsby-plugin-styled-components", 
-    "gatsby-plugin-sitemap",
-    "gatsby-plugin-robots-txt",
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-robots-txt',
     {
-      resolve: "gatsby-plugin-google-gtag",
+      resolve: 'gatsby-plugin-google-gtag',
       options: {
-         // You can add multiple tracking ids and a pageview event will be fired for all of them.
-         trackingIds: [
-          "G-1JHZ6F75FJ", // Google Analytics / GA
+        // You can add multiple tracking ids and a pageview event will be fired for all of them.
+        trackingIds: [
+          'G-1JHZ6F75FJ', // Google Analytics / GA
         ],
         // This object gets passed directly to the gtag config command
         // This config will be shared across all trackingIds
         gtagConfig: {
-          optimize_id: "OPT_CONTAINER_ID",
+          optimize_id: 'OPT_CONTAINER_ID',
           anonymize_ip: true,
           cookie_expires: 0,
         },
@@ -39,25 +39,32 @@ module.exports = {
           // Setting this parameter is also optional
           respectDNT: true,
           // Avoids sending pageview hits from custom paths
-          exclude: ["/preview/**", "/do-not-track/me/too/"],
+          exclude: ['/preview/**', '/do-not-track/me/too/'],
           // Delays processing pageview events on route update (in milliseconds)
           delayOnRouteUpdate: 0,
+        },
       },
     },
-  },
-  {
-    resolve: 'gatsby-source-sanity',
-    options: {
-      "projectId": "84qa0kd3",
-      "dataset": "production"
-    }
-  },
-  {
-    resolve: 'gatsby-plugin-sanity-image',
-    options: {
-      projectId: process.env.SANITY_PROJECT_ID,
-      dataset: process.env.SANITY_DATASET,
+    {
+      resolve: 'gatsby-source-sanity',
+      options: {
+        projectId: '84qa0kd3',
+        dataset: 'production',
+      },
     },
-  },
-]
+    {
+      resolve: 'gatsby-source-unsplash',
+      options: {
+        appId: process.env.UNSPLASH_API_KEY,
+        collections: [`875976098`],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-sanity-image',
+      options: {
+        projectId: process.env.SANITY_PROJECT_ID,
+        dataset: process.env.SANITY_DATASET,
+      },
+    },
+  ],
 };

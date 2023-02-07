@@ -137,9 +137,9 @@ export default function Footer() {
         }
       }
     }
-  `)
-  
-  const nodes = footer.nodes;
+  `);
+
+  const { nodes } = footer;
   const { values, updateValue } = useForm({
     name: '',
     subscriber: '',
@@ -157,58 +157,20 @@ export default function Footer() {
         <div className="footerContainer" key={node.id}>
           <ul className="footerCredits column">
             <li>
-              <p>If you're a member and want to receive the monthly newsletter, sign up here.</p>
-              <div className='newsletterSignup'>
-              <form
-                  className="container"
-                  id="formContainer"
-                  method="post"
-                  netlify-honeypot="bot-field"
-                  data-netlify="true"
-                  name="subscriber"
-                >
-                  <input type="hidden" name="bot-field" />
-                  <input type="hidden" name="form-name" value="subscriber" />
-                  <input 
-                    type='text' 
-                    name='name' 
-                    id='name' 
-                    value={values.name} 
-                    onChange={updateValue} 
-                    placeholder='Name' 
-                  />
-                  <input 
-                    type='text' 
-                    name='subscriber' 
-                    id='subscriber' 
-                    value={values.subscriber} 
-                    onChange={updateValue} 
-                    placeholder='Email' 
-                    className='subemail'
-                  />
-                  <button type="submit" value="Submit">
-                    Sign Up
-                  </button>
-                </form>
-              </div>
-            </li>
-            <li>
               &copy; {node.title} {new Date().getFullYear()}
             </li>
             <li>
               <ul className="inline privTerms">
                 {node.links.map((link) => (
-                  <span className='linkParser' key={link._key}>
+                  <span className="linkParser" key={link._key}>
                     <Link to={link.pagelink}>
-                      <li>
-                        {link.pagename}
-                      </li>
-                    </Link> 
+                      <li>{link.pagename}</li>
+                    </Link>
                   </span>
                 ))}
               </ul>
             </li>
-            <li> 
+            <li>
               <a href={node.devlink} target="_blank" rel="noreferrer">
                 Designed &amp; Developed by {node.dev}
               </a>
