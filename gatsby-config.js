@@ -53,13 +53,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-unsplash',
-      options: {
-        appId: process.env.UNSPLASH_API_KEY,
-        collections: [`875976098`],
-      },
-    },
-    {
       resolve: 'gatsby-plugin-sanity-image',
       options: {
         projectId: process.env.SANITY_PROJECT_ID,

@@ -28,7 +28,8 @@ const PolicyStyles = styled.div`
     margin: 0 auto;
     padding: 0 2rem;
   }
-  .updateDate, h1 {
+  .updateDate,
+  h1 {
     text-align: center;
   }
   @media only screen and (max-width: 900px) {
@@ -47,25 +48,23 @@ const PolicyStyles = styled.div`
 export default function PrivacyPolicy({ data }) {
   const policies = data.policies.nodes;
   return (
-    <>
-      <PolicyStyles>
-        <div className='overlord'>
-          <p className="updateDate">Last updated: May 17, 2022</p>
-          {policies.map((policy) => (
-            <section key={policy.id}>
-              <h1>{policy.title}</h1>
-              <section className="policyContainer">
-                <PortableText 
-                  value={policy._rawContent}
-                  components={defaultComponents}
-                  className="answer flex"
-                  />
-              </section>
+    <PolicyStyles>
+      <div className="overlord">
+        <p className="updateDate">Last updated: May 17, 2022</p>
+        {policies.map((policy) => (
+          <section key={policy.id}>
+            <h1>{policy.title}</h1>
+            <section className="policyContainer">
+              <PortableText
+                value={policy._rawContent}
+                components={defaultComponents}
+                className="answer flex"
+              />
             </section>
-          ))}
-        </div>
-      </PolicyStyles>
-    </>
+          </section>
+        ))}
+      </div>
+    </PolicyStyles>
   );
 }
 

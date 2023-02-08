@@ -28,7 +28,8 @@ const TermStyles = styled.div`
     margin: 0 auto;
     padding: 0 2rem;
   }
-  .updateDate, h1 {
+  .updateDate,
+  h1 {
     text-align: center;
   }
   @media only screen and (max-width: 900px) {
@@ -47,35 +48,33 @@ const TermStyles = styled.div`
 export default function TermsConditions({ data }) {
   const terms = data.terms.nodes;
   return (
-    <>
-      <TermStyles>
-        <div className='overlord'>
-          <p className="updateDate">Last updated: May 17, 2022</p>
-          {terms.map((term) => (
-            <section key={term.id}>
-              <h1>{term.title}</h1>
-              <section className="termsContainer">
-                <PortableText 
-                  value={term._rawContent}
-                  components={defaultComponents}
-                  />
-              </section>
+    <TermStyles>
+      <div className="overlord">
+        <p className="updateDate">Last updated: May 17, 2022</p>
+        {terms.map((term) => (
+          <section key={term.id}>
+            <h1>{term.title}</h1>
+            <section className="termsContainer">
+              <PortableText
+                value={term._rawContent}
+                components={defaultComponents}
+              />
             </section>
-          ))}
-        </div>
-      </TermStyles>
-    </>
+          </section>
+        ))}
+      </div>
+    </TermStyles>
   );
 }
 
 export const query = graphql`
   query {
     terms: allSanityTermsConditions {
-    nodes {
-      id
-      title
-      _rawContent
+      nodes {
+        id
+        title
+        _rawContent
+      }
     }
-  }
   }
 `;

@@ -1,55 +1,88 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import styled from 'styled-components';
 
-const Page = () => {
-  const generatePlayerCard = (name, age, height) => (
-    <div className="playerCard">
-      <h2>
-        {name} — {age}
-      </h2>
-      <p>
-        They are {height} and {age} years old. In Dog years this person would be{' '}
-        {age * 7}. That would be an old dog!
-      </p>
-    </div>
-  );
+const DomStyles = styled.main`
+  margin: 2rem;
+`;
+const CardStyles = styled.main`
+  display: grid;
+  grid-template-columns: repeat(2, minmax(auto, 1fr));
+  .playerCard {
+    margin: 2rem;
+    padding: 2rem;
+    border: 1px slateblue solid;
+    border-radius: 10px;
+  }
+`;
+const Button = styled.button`
+  padding: 1rem 2rem;
+  background: darkcyan;
+  color: whitesmoke;
+  &:hover {
+    background: whitesmoke;
+    color: darkcyan;
+  }
+`;
+
+const DomCardio = () => {
+  const refContainer = useRef(null);
+  const generatePlayerCard = (name, age, height) => {
+    const onButtonClick = () => {
+      refContainer.current.parentElement.remove();
+    };
+
+    return (
+      <div className="playerCard" ref={refContainer}>
+        <h2>
+          {name} — {age}
+        </h2>
+        <p>
+          They are {height} and {age} years old. In Dog years this person would
+          be {age * 7}. That would be an old dog!
+        </p>
+        <Button className="removeBtn" onClick={onButtonClick} type="button">
+          Delete
+        </Button>
+      </div>
+    );
+  };
 
   const cards = [
-    generatePlayerCard('Fred', 5, "5'1"),
-    generatePlayerCard('Ted', 15, "4'1"),
-    generatePlayerCard('Ed', 25, "6'1"),
-    generatePlayerCard('Jed', 35, "7'1"),
+    generatePlayerCard('Fred', 5, '5\'1"'),
+    generatePlayerCard('Ted', 15, '4\'1"'),
+    generatePlayerCard('Ed', 25, '6\'1"'),
+    generatePlayerCard('Jed', 35, '7\'1"'),
   ];
 
   return (
-    <div className="wrapper">
-      <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-      </ul>
-      <img
-        src="https://source.unsplash.com/random/?waterfalls"
-        width={250}
-        className="cute"
-        alt="Cute Puppy"
-      />
-      <div>
-        <p />
-        <p className="warning" />
+    <DomStyles>
+      <div className="wrapper">
+        <ul>
+          <li>One</li>
+          <li>Two</li>
+          <li>Three</li>
+        </ul>
+        <img
+          src="https://source.unsplash.com/random/?waterfalls"
+          width={250}
+          className="cute"
+          alt="Cute Puppy"
+        />
+        <div>
+          <p />
+          <p className="warning" />
+        </div>
+        <CardStyles className="cards">
+          {cards.map((card) => (
+            <React.Fragment key={card}>{card} </React.Fragment>
+          ))}
+        </CardStyles>
       </div>
-      <div className="cards">
-        {cards.map((card) => (
-          <React.Fragment key={card}>{card}</React.Fragment>
-        ))}
-      </div>
-      <button className="removeBtn" type="button">
-        Delete
-      </button>
-    </div>
+    </DomStyles>
   );
 };
 
-export default Page;
+export default DomCardio;
 
 // Original JavaScript
 /*
