@@ -1,6 +1,25 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
+  /* CSS Reset by Mirkov Sasa https://github.com/mirkovsasa/CSS-Reset/blob/main/Reset.css */
+
+  /* Resetting defaults */
+  * {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      font-size: 100%;
+      vertical-align: baseline;
+      background: transparent;
+      box-sizing: border-box;
+  }
+
+  /* Setting border box model for easier sizing of elements */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
   :root {
     --blue: #0B30DE;
     --mint: #DAF7DC;

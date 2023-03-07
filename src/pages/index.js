@@ -9,7 +9,7 @@ const BasicStyles = styled.main`
 const IndexPage = () => (
   <BasicStyles>
     <h1>Welcome to my projects page!</h1>
-    <p>This is where I create things for fun; useful and not-so-much alike.</p>
+    <p>This is where I create things for fun: useful and not-so-much alike.</p>
   </BasicStyles>
 );
 

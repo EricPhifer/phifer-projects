@@ -32,7 +32,7 @@ const DomCardio = () => {
     };
 
     return (
-      <div className="playerCard" ref={refContainer}>
+      <div className="playerCard">
         <h2>
           {name} — {age}
         </h2>
@@ -40,7 +40,12 @@ const DomCardio = () => {
           They are {height} and {age} years old. In Dog years this person would
           be {age * 7}. That would be an old dog!
         </p>
-        <Button className="removeBtn" onClick={onButtonClick} type="button">
+        <Button
+          className="removeBtn"
+          onClick={onButtonClick}
+          type="button"
+          ref={refContainer}
+        >
           Delete
         </Button>
       </div>
@@ -63,8 +68,9 @@ const DomCardio = () => {
           <li>Three</li>
         </ul>
         <img
-          src="https://source.unsplash.com/random/?waterfalls"
-          width={250}
+          src="https://source.unsplash.com/random/300x300/?horses"
+          width={300}
+          height={300}
           className="cute"
           alt="Cute Puppy"
         />
@@ -74,7 +80,7 @@ const DomCardio = () => {
         </div>
         <CardStyles className="cards">
           {cards.map((card) => (
-            <React.Fragment key={card}>{card} </React.Fragment>
+            <React.Fragment key={card}> {card} </React.Fragment>
           ))}
         </CardStyles>
       </div>
@@ -83,6 +89,8 @@ const DomCardio = () => {
 };
 
 export default DomCardio;
+
+export const Head = () => <title>DOM Cardio</title>;
 
 // Original JavaScript
 /*
